@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\jospin\source\repos\Danieljospin1\QLess-Digital-Queue-Management-System-.NET-Project-\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\jospin\source\repos\Danieljospin1\QLess-Digital-Queue-Management-System-.NET-Project-\.editorconfig" />
+  </ItemGroup>
+
+</Project>
