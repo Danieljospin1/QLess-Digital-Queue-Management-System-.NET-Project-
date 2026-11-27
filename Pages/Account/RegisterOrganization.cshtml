@@ -1,0 +1,186 @@
+﻿
+@page
+@model QLess.Pages.Account.RegisterOrganizationModel
+
+@{
+    ViewData["Title"] = "Register Organization";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">QLess</h2>
+                        <p class="text-muted">
+                            Register your organization and create your administrator account.
+                        </p>
+                    </div>
+
+                    <form method="post">
+
+                        <h5 class="fw-bold mb-3">
+                            Organization Information
+                        </h5>
+
+                        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @Model.SuccessMessage
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <label asp-for="OrganizationName"
+                                   class="form-label">
+                                Organization Name
+                            </label>
+
+                            <input asp-for="OrganizationName"
+                                   class="form-control"
+                                   placeholder="e.g. Bank of Kigali" />
+
+                            <span asp-validation-for="OrganizationName"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="OrganizationEmail"
+                                   class="form-label">
+                                Organization Email
+                            </label>
+
+                            <input asp-for="OrganizationEmail"
+                                   class="form-control"
+                                   placeholder="info@organization.com" />
+
+                            <span asp-validation-for="OrganizationEmail"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="OrganizationPhone"
+                                   class="form-label">
+                                Organization Phone
+                            </label>
+
+                            <input asp-for="OrganizationPhone"
+                                   class="form-control"
+                                   placeholder="+250 788 000 000" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="OrganizationAddress"
+                                   class="form-label">
+                                Organization Address
+                            </label>
+
+                            <input asp-for="OrganizationAddress"
+                                   class="form-control"
+                                   placeholder="Kigali, Rwanda" />
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <h5 class="fw-bold mb-3">
+                            Administrator Information
+                        </h5>
+
+                        <div class="mb-3">
+                            <label asp-for="FullName"
+                                   class="form-label">
+                                Full Name
+                            </label>
+
+                            <input asp-for="FullName"
+                                   class="form-control"
+                                   placeholder="Your full name" />
+
+                            <span asp-validation-for="FullName"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AdminEmail"
+                                   class="form-label">
+                                Administrator Email
+                            </label>
+
+                            <input asp-for="AdminEmail"
+                                   class="form-control"
+                                   placeholder="you@organization.com" />
+
+                            <span asp-validation-for="AdminEmail"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AdminPhone"
+                                   class="form-label">
+                                Administrator Phone
+                            </label>
+
+                            <input asp-for="AdminPhone"
+                                   class="form-control"
+                                   placeholder="+250 788 000 000" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password"
+                                   class="form-label">
+                                Password
+                            </label>
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Password"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword"
+                                   class="form-label">
+                                Confirm Password
+                            </label>
+
+                            <input asp-for="ConfirmPassword"
+                                   type="password"
+                                   class="form-control" />
+
+                            <span asp-validation-for="ConfirmPassword"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100 py-2">
+                            Create Organization Account
+                        </button>
+
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <span class="text-muted">
+                            Already registered?
+                        </span>
+                        <a asp-page="/Account/Login">Sign in</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

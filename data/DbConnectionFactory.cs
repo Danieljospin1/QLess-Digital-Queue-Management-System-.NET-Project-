@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Data.SqlClient;
-namespace QLess.data
+namespace QLess.Data
 {
     public class DbConnectionFactory
     {

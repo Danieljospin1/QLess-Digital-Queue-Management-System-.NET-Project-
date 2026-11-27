@@ -1,5 +1,5 @@
 
-using QLess.data;
+using QLess.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
