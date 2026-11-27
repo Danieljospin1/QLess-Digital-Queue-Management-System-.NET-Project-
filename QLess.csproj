@@ -14,4 +14,8 @@
     <None Include="C:\Users\jospin\source\repos\Danieljospin1\QLess-Digital-Queue-Management-System-.NET-Project-\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>
