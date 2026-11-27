@@ -187,6 +187,11 @@ namespace QLess.Pages.Account
 
                     Password = "";
                     ConfirmPassword = "";
+                    OrganizationName = "";
+                    OrganizationAddress = "";
+                    OrganizationPhone = "";
+                    AdminEmail = "";
+                    AdminPhone = "";
 
                     return Page();
                 }
