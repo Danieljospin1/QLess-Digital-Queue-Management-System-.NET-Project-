@@ -1,5 +1,8 @@
 
 using QLess.Data;
+using DotNetEnv;
+
+Env.Load();
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +11,45 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<DbConnectionFactory>();
+
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Client", "CustomerOnly");
+    options.Conventions.AuthorizeFolder("/Employee", "EmployeeOnly");
+    options.Conventions.AuthorizeFolder("/Admin", "AdminOnly");
+
+    options.Conventions.AllowAnonymousToFolder("/Account");
+});
+
+// Configure authentication
+builder.Services
+    .AddAuthentication("QLessCookie")
+    .AddCookie("QLessCookie", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+
+        options.Cookie.Name = "QLess.Auth";
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.Lax;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+        options.SlidingExpiration = true;
+    });
+
+// Configure authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CustomerOnly",
+        policy => policy.RequireRole("CUSTOMER"));
+
+    options.AddPolicy("EmployeeOnly",
+        policy => policy.RequireRole("EMPLOYEE"));
+
+    options.AddPolicy("AdminOnly",
+        policy => policy.RequireRole("ADMIN"));
+});
 
 
 var app = builder.Build();

@@ -6,10 +6,10 @@ namespace QLess.Data
     {
         private readonly string _connectionString;
 
-        public DbConnectionFactory(IConfiguration configuration)
+        public DbConnectionFactory()
         {
-            _connectionString = configuration
-                .GetConnectionString("QLessConnection")!;
+            _connectionString = Environment.GetEnvironmentVariable("QLessConnection") ?? throw new InvalidOperationException(
+                    "QLessConnection was not found in the environment variables.");
         }
 
         public SqlConnection CreateConnection()
